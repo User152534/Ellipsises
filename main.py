@@ -10,7 +10,7 @@ from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QLineEdit
 
 
-class Square1(QMainWindow):
+class Main(QMainWindow):
     def __init__(self):
         super().__init__()
         f = io.StringIO(open('UI.ui', encoding='utf8').read())
@@ -27,7 +27,7 @@ class Square1(QMainWindow):
         if self.do_paint:
             qp = QPainter(self)
             qp.begin(self)
-            self.draw_flag(qp)
+            self.draw_ellipse(qp)
             qp.end()
 
     def paint(self):
@@ -35,7 +35,7 @@ class Square1(QMainWindow):
         self.update()
         self.repaint()
 
-    def draw_flag(self, qp):
+    def draw_ellipse(self, qp):
         qp.setPen(self.color)
         qp.setBrush(QColor(255, 255, 0))
         d = random.randint(10, 250)
@@ -47,7 +47,7 @@ class Square1(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Square1()
+    ex = Main()
     ex.show()
     sys.excepthook = ex.except_hook
     sys.exit(app.exec())
